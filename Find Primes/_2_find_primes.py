@@ -34,21 +34,21 @@ def search_primes_single_thread(numbers):
 
 
 def search_primes_multi_thread(numbers, chunks=4):
-    with ThreadPoolExecutor(max_workers=chunks) as pool:
+    with ThreadPoolExecutor(max_workers=None) as pool:
         results = pool.map(is_prime, numbers)
 
     return results
 
-# Single thread
-print('Single thread:')
-with buddy.measure_time() as tm:
-    results = search_primes_single_thread(numbers)
+# # Single thread
+# print('Single thread:')
+# with buddy.measure_time() as tm:
+#     results = search_primes_single_thread(numbers)
 
-tm.print()
-print(f"Found {len(results)} primes out of {len(numbers)} total numbers.")
-print('\n')
-print('-' * 80)
-print('\n')
+# tm.print()
+# print(f"Found {len(results)} primes out of {len(numbers)} total numbers.")
+# print('\n')
+# print('-' * 80)
+# print('\n')
 print('Multithreaded thread:')
 with buddy.measure_time() as tm:
     results = search_primes_multi_thread(numbers)
